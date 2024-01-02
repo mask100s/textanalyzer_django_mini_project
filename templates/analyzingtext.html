@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center>
+    <h1><b><u>Text analyzer</u></b></h1>
+
+    <form action="/analyzedtext" method="get">
+
+      <textarea name="textarea" id="" cols="30" rows="10" style="width: 627px; height: 108px;"></textarea>
+      <br>
+
+      <p>Here you can:-</p>
+
+      <table width="13%">
+        <tr><td>
+          <div align="left">
+            <input type="checkbox" name="removepunc" id="">Remove punctuations
+            <br>
+            <input type="checkbox" name="removespace" id="">Remove spaces
+            <br>
+            <input type="checkbox" name="removeline" id="">Remove new lines
+            <br>
+            <input type="checkbox" name="upper" id="">Convert to uppercase
+            <br>
+            <input type="checkbox" name="lower" id="">Convert to lowercase
+            <br>
+            <input type="checkbox" name="countchar" id="">Count no. of charaters
+          </div>
+        </td></tr>
+      </table>
+
+      <br>
+
+      <input type="submit" value="Click here to Analyze">
+      <input type="reset" value="Reset">
+
+
+    </form>
+    
+
+  </center>
+</body>
+</html>
