@@ -24,17 +24,26 @@
     
     <ol>
       {% for purpose in inputpurpose %}
-        <li>
-          {{purpose}}
-        </li>
+        {% if purpose == 'No utility selected' %}
+           {{purpose}}
+        {% else %}
+          <li>
+            {{purpose}}
+          </li>
+        {% endif %}
       {% endfor %}
     </ol>
 
   </h3>
   <br>
+
+  <!------------------------analyzed text------------------------>
+
   <h2>
     Text after analysis:-
   </h2>
-  <p>{{inputtext}}</p>
+  <p>
+    <pre style="margin-left: 40px;">{{inputtext}}</pre>
+  </p>
 </body>
 </html>

@@ -9,21 +9,34 @@
   <center>
     <h1><b><u>Text analyzer</u></b></h1>
 
-    <form action="/analyzedtext" method="get">
+    <form action="/analyzedtext" method="get" target="_blank">
 
-      <textarea name="textarea" id="" cols="30" rows="10" style="width: 627px; height: 108px;"></textarea>
+      <div style="margin-left:-450px; margin-bottom: 10px;">
+        <label for="ta">
+          <b>Enter the text for analysis:</b>
+        </label>
+
+      </div>
+
+      <textarea name="textarea" id="ta" cols="30" rows="10" style="width: 627px; height: 108px;"></textarea>
       <br>
 
-      <p>Here you can:-</p>
+      <p style="margin-left:-530px;"><b>Here you can:-</b></p>
 
-      <table width="13%">
+      <table width="200px" style="margin-left:-440px;">
         <tr><td>
           <div align="left">
             <input type="checkbox" name="removepunc" id="">Remove punctuations
             <br>
             <input type="checkbox" name="removespace" id="">Remove spaces
             <br>
+            <input type="checkbox" name="removeextraspace" id="">Remove extra spaces
+            <br>
             <input type="checkbox" name="removeline" id="">Remove new lines
+            <br>
+            <input type="checkbox" name="removedigit" id="">Remove digits
+            <br>
+            <input type="checkbox" name="removealpha" id="">Remove alphabets
             <br>
             <input type="checkbox" name="upper" id="">Convert to uppercase
             <br>

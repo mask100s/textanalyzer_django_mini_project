@@ -26,12 +26,12 @@ from django.http import HttpResponse
 
 # def analyzedtext(request):
 #   text=request.GET.get('textarea','default') 
-#   removepunc=request.GET.get('removepunc') 
-#   removespace=request.GET.get('removespace')  
-#   removeline=request.GET.get('removeline')  
-#   uppercase=request.GET.get('upper') 
-#   lowercase=request.GET.get('lower')  
-#   countchar=request.GET.get('countchar')
+#   removepunc=request.GET.get('removepunc','off') 
+#   removespace=request.GET.get('removespace','off')  
+#   removeline=request.GET.get('removeline','off')  
+#   uppercase=request.GET.get('upper','off') 
+#   lowercase=request.GET.get('lower','off')  
+#   countchar=request.GET.get('countchar','off')
 
 #   newtext=''
 #   purpose = ''
@@ -115,15 +115,17 @@ def analyzingtext(request):
   
 
 def analyzedtext(request):
-  text=request.GET.get('textarea') 
-  print(text)
+  text=request.GET.get('textarea','default') 
 
-  removepunc=request.GET.get('removepunc') 
-  removespace=request.GET.get('removespace')  
-  removeline=request.GET.get('removeline')  
-  uppercase=request.GET.get('upper') 
-  lowercase=request.GET.get('lower')  
-  countchar=request.GET.get('countchar')
+  removepunc=request.GET.get('removepunc','off') 
+  removespace=request.GET.get('removespace','off') 
+  removeextraspace=request.GET.get('removeextraspace','off')  
+  removeline=request.GET.get('removeline','off') 
+  removedigit=request.GET.get('removedigit','off')  
+  removealpha=request.GET.get('removealpha','off')  
+  uppercase=request.GET.get('upper','off') 
+  lowercase=request.GET.get('lower','off')  
+  countchar=request.GET.get('countchar','off')
 
   newtext=''
   purpose = []
@@ -131,24 +133,47 @@ def analyzedtext(request):
   if removepunc=='on':
     purpose.append('Remove punctuations')
     text=removepunctuation(text,newtext)
+
   if removespace=='on':
     purpose.append('Remove spaces')
     text=removespaces(text,newtext)
+
+  if removeextraspace=='on':
+    purpose.append('Remove extra spaces')
+    text=removeextraspaces(text)
+
   if removeline=='on':
     purpose.append('Remove new lines')
     text=removenewlines(text,newtext)
+
+  if removedigit=='on':
+    purpose.append('Remove digits')
+    text=removedigits(text,newtext)
+
+  if removealpha=='on':
+    purpose.append('Remove alphabets')
+    text=removealphabets(text,newtext)
+
   if uppercase=='on':
     purpose.append('Convert to uppercase')
     text=text.upper()
+
   if lowercase=='on':
     purpose.append('Convert to lowercase')
     text=text.lower()
+
   if countchar=='on':
     purpose.append('Count no. of characters')
     text=countchars(text)
-  if removepunc == removespace == removeline == uppercase == lowercase == countchar == 'off':
-    purpose=['None']
+
+  if removepunc == removespace == removeextraspace == removeline == removedigit == removealpha == uppercase == lowercase == countchar == 'off':
+    purpose=['No utility selected']
+    if text == '':
+      text='No text entered for analysis'
     text=text
+
+  if text == '':
+    text='No text entered for analysis'
 
 
   d={ "inputpurpose":purpose, "inputtext":text}
@@ -157,7 +182,7 @@ def analyzedtext(request):
 
 def removepunctuation(text,newtext):
   for ch in text:
-    if ch not in '.,;:!-?()""': 
+    if ch not in '.,;:!-?(})[]{@#$%^*+=|\/~`""': 
         newtext += ch
   return newtext
 
@@ -166,16 +191,32 @@ def removespaces(text,newtext):
     if ch != ' ': 
         newtext += ch
   return newtext
+  
+def removeextraspaces(text):
+  return ' '.join(text.split())
 
 def removenewlines(text,newtext):
   for ch in text:
-    if ch != '\n': 
+    if ch != '\n' and ch !='\r': 
+        newtext += ch
+  return newtext
+
+def removedigits(text,newtext):
+  for ch in text:
+    if ch not in '01234567890': 
+        newtext += ch
+  return newtext
+
+def removealphabets(text,newtext):
+  li = [chr(val) for val in range(65,91)]+[chr(val) for val in range(97,123)]
+  for ch in text: 
+    if ch not in li: 
         newtext += ch
   return newtext
 
 def countchars(text):
   count=0
   for ch in text:
-    if ch != '\n': 
+    if ch != '\n' and ch !='\r': 
         count += 1
   return count
