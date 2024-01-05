@@ -1,0 +1,58 @@
+{% extends 'analyzingtext.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% block title %}
+  <title>analyzedtext</title>
+  {% endblock %}
+
+
+
+</head>
+{% block body %}
+<body class="">
+  <div class="m-5 justify-content-center">
+    <div class="m-auto w-75">
+      <h5>
+        <div class="rounded bg-dark text-white px-3 pt-1 pb-1" style="width: 300px;">
+          Text was Analyzed to:-
+        </div>
+      </h5>
+
+      <p>
+        <b>
+          <ol>
+            {% for purpose in inputpurpose %}
+              {% if purpose == 'No utility selected' %}
+                {{purpose}}
+              {% else %}
+                <li>
+                  {{purpose}}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ol>
+        </b>
+      </p>
+      <br>
+
+      <!------------------------analyzed text------------------------>
+
+      <h5>
+        <div class="rounded bg-dark text-white px-3 pt-1 pb-1" style="width: 300px;">
+        Text after analysis:-
+        </div>
+      </h5>
+      <div class="border px-2" >
+        <pre class="m-0">{{inputtext}}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}
+</html>

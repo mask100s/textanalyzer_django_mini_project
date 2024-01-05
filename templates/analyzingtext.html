@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  {% block title %}
+  <title>analyzingtext</title>
+  {% endblock %}
+
+
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand px-1" href="{% url 'connect_1:home' %}" target="_blank">
+        <img src="https://www.freepnglogos.com/x-logo-png-twitter-0.jpg" alt="" width="24" height="24" class="d-inline-block align-text-top rounded">
+        <strong>Text Analyzer</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#link" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="navbar-collapse collapse" id="link">
+        <ul class="navbar-nav mr-auto w-75">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'connect_1:analyzingtext' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.codewithharry.com/videos/python-django-tutorials-hindi-0/" target="_blank">Code</a>
+          </li>
+        </ul>      
+        <form class="d-flex mx-auto" action="https://www.google.com/" method="get" target="_blank">
+          <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" name="search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>  
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  {% block body %}
+
+  <center>
+    <br>
+    <div class="w-50">
+      <form action="{% url 'connect_1:analyzedtext' %}" method="get" target="_blank" class="m-2">
+
+        <div class="text-left">
+          <label for="ta" class="form-label ">
+            <b>Enter the below text for analysis:</b>
+          </label>
+        </div>
+
+
+        <textarea name="textarea" id="ta" cols="30" rows="5"  class="form-control"  placeholder="Enter Text"></textarea>
+        <br>
+
+        <div class="text-left">
+          <label for="" class="form-label">
+            <b>Here you can:-</b>
+          </label>
+        </div>
+        
+        <div class="text-left px-5">
+          <input type="checkbox" name="removepunc" id="rp" class="form-check-input" >
+          <label for="rp" class="form-check-label">Remove punctuations</label>
+          <br>
+          <input type="checkbox" name="removespace" id="rs" class="form-check-input" >
+          <label for="rs" class="form-check-label">Remove spaces</label>
+          <br>
+          <input type="checkbox" name="removeextraspace" id="res" class="form-check-input" >
+          <label for="res" class="form-check-label">Remove extra spaces</label>
+          <br>
+          <input type="checkbox" name="removeline" id="rnl" class="form-check-input" >
+          <label for="rnl" class="form-check-label">Remove new lines</label>
+          <br>
+          <input type="checkbox" name="removedigit" id="rd" class="form-check-input" >
+          <label for="rd" class="form-check-label">Remove digits</label>
+          <br>
+          <input type="checkbox" name="removealpha" id="ra" class="form-check-input" >
+          <label for="ra" class="form-check-label">Remove alphabets</label>
+          <br>
+          <input type="checkbox" name="upper" id="cu" class="form-check-input" >
+          <label for="cu" class="form-check-label">Convert to uppercase</label>
+          <br>
+          <input type="checkbox" name="lower" id="cl" class="form-check-input" >
+          <label for="cl" class="form-check-label">Convert to lowercase</label>
+          <br>
+          <input type="checkbox" name="countchar" id="cch" class="form-check-input" >
+          <label for="cch" class="form-check-label">Count no. of charaters</label>
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center">
+          <input type="submit" value="Click here to Analyze"  class="btn btn-success mx-2">
+          <input type="reset" value="Reset"  class="btn btn-danger">
+        </div>
+
+
+      </form>
+    </div>
+    
+
+  </center>
+  {% endblock %}
+
+
+
+  <script src="{% static 'js/bootstrap.popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+</body>
+</html>
