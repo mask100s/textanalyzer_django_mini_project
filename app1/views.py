@@ -25,17 +25,17 @@ def analyzingtext(request):
   
 
 def analyzedtext(request):
-  text=request.GET.get('textarea','Default') 
+  text=request.POST.get('textarea','Default') 
 
-  removepunc=request.GET.get('removepunc','off') 
-  removespace=request.GET.get('removespace','off') 
-  removeextraspace=request.GET.get('removeextraspace','off')  
-  removeline=request.GET.get('removeline','off') 
-  removedigit=request.GET.get('removedigit','off')  
-  removealpha=request.GET.get('removealpha','off')  
-  uppercase=request.GET.get('upper','off') 
-  lowercase=request.GET.get('lower','off')  
-  countchar=request.GET.get('countchar','off')
+  removepunc=request.POST.get('removepunc','off') 
+  removespace=request.POST.get('removespace','off') 
+  removeextraspace=request.POST.get('removeextraspace','off')  
+  removeline=request.POST.get('removeline','off') 
+  removedigit=request.POST.get('removedigit','off')  
+  removealpha=request.POST.get('removealpha','off')  
+  uppercase=request.POST.get('upper','off') 
+  lowercase=request.POST.get('lower','off')  
+  countchar=request.POST.get('countchar','off')
 
   newtext=''
   purpose = []
