@@ -59,7 +59,8 @@
   <center>
     <br>
     <div class="w-50">
-      <form action="{% url 'connect_1:analyzedtext' %}" method="get" target="_blank" class="m-2">
+      <form action="{% url 'connect_1:analyzedtext' %}" method="POST" target="_blank" class="m-2">
+        {% csrf_token %}
 
         <div class="text-left">
           <label for="ta" class="form-label ">
